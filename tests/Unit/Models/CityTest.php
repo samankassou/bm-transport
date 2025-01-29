@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\City;
+use App\Models\Country;
 
 it('to array', function () {
     $city = City::factory()->create()->fresh();
@@ -15,4 +16,10 @@ it('to array', function () {
             'created_at',
             'updated_at',
         ]);
+});
+
+it('belongs to a country', function () {
+    $city = City::factory()->create()->fresh();
+
+    expect($city->country)->toBeInstanceOf(Country::class);
 });
