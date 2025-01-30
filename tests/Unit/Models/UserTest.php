@@ -17,3 +17,9 @@ test('to array', function () {
             'updated_at',
         ]);
 });
+
+it('may have companies', function () {
+    $user = User::factory()->hasCompanies(3)->create();
+
+    expect($user->companies)->toHaveCount(3);
+});
