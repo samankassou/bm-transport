@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use App\Models\Company;
+use App\Models\User;
 
 it('to array', function () {
     $company = Company::factory()->create()->fresh();

@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Company;
 use Database\Factories\UserFactory;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 final class User extends Authenticatable
 {
@@ -40,6 +39,11 @@ final class User extends Authenticatable
         'remember_token',
     ];
 
+    public function companies(): HasMany
+    {
+        return $this->hasMany(Company::class, 'owner_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -51,10 +55,5 @@ final class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function companies(): HasMany
-    {
-        return $this->hasMany(Company::class, 'owner_id');
     }
 }
