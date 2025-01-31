@@ -13,20 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table): void {
             $table->id();
             $table->string('key');
             $table->string('type');
             $table->text('value')->nullable();
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('settings');
     }
 };

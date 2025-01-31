@@ -14,6 +14,11 @@ final class City extends Model
     /** @use HasFactory<CityFactory> */
     use HasFactory;
 
+    /**
+     * Get the country that owns the city.
+     *
+     * @return BelongsTo<Country, $this>
+     */
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);

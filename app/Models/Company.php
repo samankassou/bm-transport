@@ -14,6 +14,11 @@ final class Company extends Model
     /** @use HasFactory<CompanyFactory> */
     use HasFactory;
 
+    /**
+     * Get the owner that owns the company.
+     *
+     * @return BelongsTo<User, $this>
+     */
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id');

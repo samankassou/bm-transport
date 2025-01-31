@@ -39,6 +39,11 @@ final class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @return HasMany<Company, $this>
+     */
     public function companies(): HasMany
     {
         return $this->hasMany(Company::class, 'owner_id');
