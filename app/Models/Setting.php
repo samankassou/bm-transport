@@ -15,7 +15,7 @@ final class Setting extends Model
 
     public static function getValue(string $key, mixed $default = null): mixed
     {
-        return Cache::rememberForever('setting:' . $key, function () use ($key, $default) {
+        return Cache::rememberForever('setting:'.$key, function () use ($key, $default) {
             $setting = self::where('key', $key)->first();
             if ($setting) {
                 return match ($setting->type) {
@@ -40,6 +40,6 @@ final class Setting extends Model
             self::create(['key' => $key, 'value' => $value, 'type' => $type]);
         }
 
-        Cache::forget('setting:' . $key);
+        Cache::forget('setting:'.$key);
     }
 }
