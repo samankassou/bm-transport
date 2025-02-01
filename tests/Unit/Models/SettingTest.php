@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Models\Setting;
 use Illuminate\Support\Facades\Cache;
 
-it('to array', function () {
+test('to array', function () {
     $city = Setting::factory()->create()->fresh();
 
     expect(array_keys($city->toArray()))
@@ -45,7 +45,7 @@ it('clears cache when setting is updated', function () {
     $key = 'test_key';
     Cache::shouldReceive('forget')
         ->once()
-        ->with('setting:'.$key)
+        ->with('setting:' . $key)
         ->andReturn(true);
 
     Setting::setValue($key, 'test_value');

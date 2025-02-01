@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Models\City;
 use App\Models\Country;
 
-it('to array', function () {
+test('to array', function () {
     $city = City::factory()->create()->fresh();
 
     expect(array_keys($city->toArray()))

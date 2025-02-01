@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Models\Company;
 use App\Models\User;
 
-it('to array', function () {
+test('to array', function () {
     $company = Company::factory()->create()->fresh();
 
     expect(array_keys($company->toArray()))
