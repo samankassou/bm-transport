@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_of_incomes', function (Blueprint $table): void {
+        Schema::create('expenses', function (Blueprint $table): void {
             $table->id();
-            $table->string('name');
+            $table->foreignId('type_of_expense_id')->constrained();
+            $table->string('title')->nullable();
+            $table->date('date');
+            $table->unsignedInteger('amount');
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }

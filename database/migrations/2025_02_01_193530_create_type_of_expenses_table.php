@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('type_of_incomes', function (Blueprint $table): void {
+        Schema::create('type_of_expenses', function (Blueprint $table): void {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->timestamps();
         });
     }
