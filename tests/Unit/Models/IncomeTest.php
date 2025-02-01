@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Models\Income;
 
 test('to array', function () {
@@ -20,5 +22,5 @@ test('to array', function () {
 it('has type of income', function () {
     $income = Income::factory()->create();
 
-    expect($income->typeOfIncome)->toBeInstanceOf(\App\Models\TypeOfIncome::class);
+    expect($income->typeOfIncome)->toBeInstanceOf(App\Models\TypeOfIncome::class);
 });

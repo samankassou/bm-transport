@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Models\TypeOfIncome;
 
-
 test('to array', function () {
     $typeOfIncome = TypeOfIncome::factory()->create()->fresh();
 

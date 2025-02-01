@@ -45,7 +45,7 @@ it('clears cache when setting is updated', function () {
     $key = 'test_key';
     Cache::shouldReceive('forget')
         ->once()
-        ->with('setting:' . $key)
+        ->with('setting:'.$key)
         ->andReturn(true);
 
     Setting::setValue($key, 'test_value');
