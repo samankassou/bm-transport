@@ -11,7 +11,5 @@ it('can delete an income', function () {
 
     $action->handle($income);
 
-    $this->assertDatabaseMissing('incomes', [
-        'id' => $income->id,
-    ]);
+    $this->assertModelMissing($income);
 });
