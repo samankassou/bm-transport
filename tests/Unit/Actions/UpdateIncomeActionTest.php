@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Income;
+declare(strict_types=1);
+
 use App\Actions\UpdateIncomeAction;
-use Illuminate\Validation\ValidationException;
+use App\Models\Income;
 
 it('can update an income', function () {
     $this->freezeTime();
