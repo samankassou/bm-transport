@@ -45,3 +45,13 @@ it('can update an income', function () {
         'amount' => 1000,
     ]);
 });
+
+it('can delete an income', function () {
+    $income = Income::factory()->create();
+
+    $response = $this->deleteJson(route('incomes.destroy', $income));
+
+    $response->assertStatus(204);
+
+    expect($income->exists())->toBeFalse();
+});

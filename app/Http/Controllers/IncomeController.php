@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\CreateIncomeAction;
+use App\Actions\DeleteIncomeAction;
 use App\Actions\UpdateIncomeAction;
 use App\Http\Requests\CreateIncomeRequest;
 use App\Http\Requests\UpdateIncomeRequest;
@@ -23,6 +24,13 @@ final class IncomeController
     public function update(UpdateIncomeRequest $request, Income $income, UpdateIncomeAction $action): Response
     {
         $action->handle($income, $request->array());
+
+        return response(status: 204);
+    }
+
+    public function destroy(Income $income, DeleteIncomeAction $action): Response
+    {
+        $action->handle($income);
 
         return response(status: 204);
     }

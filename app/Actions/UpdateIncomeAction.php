@@ -11,8 +11,7 @@ final class UpdateIncomeAction
     /**
      * Update the income.
      *
-     * @param Income $income
-     * @param array<string, string|int> $attributes
+     * @param  array<string, string|int>  $attributes
      */
     public function handle(Income $income, array $attributes): void
     {
