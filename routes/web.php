@@ -9,4 +9,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('incomes', IncomeController::class)->only(['store']);
+Route::resource('incomes', IncomeController::class)->only(['store', 'update']);
