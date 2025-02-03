@@ -27,6 +27,8 @@ it('can update an income', function () {
         'date' => now(),
         'amount' => 2000,
     ]);
+
+    expect($income->typeOfIncome->id)->toBe($typeOfIncome->id);
 });
 
 it('updates only the provided fields', function () {
