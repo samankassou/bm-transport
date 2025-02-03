@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateIncomeAction;
-use App\Actions\DeleteIncomeAction;
-use App\Actions\UpdateIncomeAction;
+use App\Actions\Income\CreateIncomeAction;
+use App\Actions\Income\DeleteIncomeAction;
+use App\Actions\Income\UpdateIncomeAction;
 use App\Http\Requests\CreateIncomeRequest;
 use App\Http\Requests\UpdateIncomeRequest;
 use App\Models\Income;

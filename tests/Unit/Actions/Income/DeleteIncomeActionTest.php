@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Actions\DeleteIncomeAction;
+use App\Actions\Income\DeleteIncomeAction;
 use App\Models\Income;
 
 it('can delete an income', function () {

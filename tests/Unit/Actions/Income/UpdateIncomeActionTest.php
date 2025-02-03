@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Actions\UpdateIncomeAction;
+use App\Actions\Income\UpdateIncomeAction;
 use App\Models\Income;
 
 it('can update an income', function () {

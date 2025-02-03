@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Actions\CreateExpenseAction;
+use App\Actions\Expense\CreateExpenseAction;
 use App\Models\TypeOfExpense;
 
 it('can create an expense', function () {

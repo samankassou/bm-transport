@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Actions\CreateExpenseAction;
+use App\Actions\Expense\CreateExpenseAction;
 use App\Http\Requests\CreateExpenseRequest;
 use Illuminate\Http\Response;
 

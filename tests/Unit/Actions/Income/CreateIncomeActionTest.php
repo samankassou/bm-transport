@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Actions\CreateIncomeAction;
+use App\Actions\Income\CreateIncomeAction;
 use App\Models\TypeOfIncome;
 
 it('creates new income', function () {
