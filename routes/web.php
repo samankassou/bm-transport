@@ -11,4 +11,4 @@ Route::get('/', function () {
 });
 
 Route::resource('incomes', IncomeController::class)->only(['store', 'update', 'destroy']);
-Route::resource('expenses', ExpenseController::class)->only(['store']);
+Route::resource('expenses', ExpenseController::class)->only(['store', 'update', 'destroy']);
