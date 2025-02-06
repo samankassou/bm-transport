@@ -1,20 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Database\Factories\SupplierFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Supplier extends Model
+final class Supplier extends Model
 {
     /** @use HasFactory<SupplierFactory> */
     use HasFactory;
 
     /**
      * Get the company that owns the supplier.
+     *
      * @return BelongsTo<Company, $this>
      */
     public function company(): BelongsTo
@@ -24,6 +27,7 @@ class Supplier extends Model
 
     /**
      * Get the supplier type.
+     *
      * @return BelongsTo<SupplierType, $this>
      */
     public function supplierType(): BelongsTo
@@ -33,6 +37,8 @@ class Supplier extends Model
 
     /**
      * Get the country of the supplier.
+     *
+     * @return BelongsTo<Country, $this>
      */
     public function country(): BelongsTo
     {
@@ -41,6 +47,8 @@ class Supplier extends Model
 
     /**
      * Get the city of the supplier.
+     *
+     * @return BelongsTo<City, $this>
      */
     public function city(): BelongsTo
     {
@@ -49,6 +57,7 @@ class Supplier extends Model
 
     /**
      * get the supplier phones
+     *
      * @return HasMany<SupplierPhone, $this>
      */
     public function phones(): HasMany

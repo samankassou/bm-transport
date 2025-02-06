@@ -1,19 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasCompany;
 use Database\Factories\SupplierTypeFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class SupplierType extends Model
+final class SupplierType extends Model
 {
+    use HasCompany;
+
     /** @use HasFactory<SupplierTypeFactory> */
     use HasFactory;
 
     /**
      * Get the suppliers for the supplier type.
+     *
      * @return HasMany<Supplier, $this>
      */
     public function suppliers(): HasMany
