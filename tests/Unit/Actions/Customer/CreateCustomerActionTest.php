@@ -36,10 +36,9 @@ it('can create a customer with phone numbers', function () {
         'rccm_number' => '123456789',
         'postal_code' => '12345',
         'address' => '123 Main St',
-        'phones' => [
-            ['phone' => '1234567890'],
-            ['phone' => '0987654321'],
-        ],
+    ], [
+        ['phone' => '1234567890'],
+        ['phone' => '0987654321'],
     ]);
 
     expect($company->customers->first()->phones->count())->toBe(2);

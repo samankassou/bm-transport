@@ -9,20 +9,19 @@ use Illuminate\Support\Facades\DB;
 
 final class CreateCustomerAction
 {
-    public function __construct(private CreateCustomerPhoneAction $createCustomerPhoneAction) {}
-
     /**
      * Handle creating a customer.
      *
-     * @param  array<string, string|array<string, string>>  $attributes
+     * @param  array<string, string>  $attributes
+     * @param  array<string, mixed>  $phones
      */
-    public function handle(Company $company, array $attributes): void
+    public function handle(Company $company, array $attributes, array $phones = []): void
     {
-        DB::transaction(function () use ($company, $attributes): void {
-            $phones = $attributes['phones'] ?? [];
-            $customerData = collect($attributes)->except('phones')->toArray();
-            $customer = $company->customers()->create($customerData);
-            $customer->phones()->createMany($phones);
+        DB::transaction(function () use ($company, $attributes, $phones): void {
+            $customer = $company->customers()->create($attributes);
+            foreach ($phones as $phone) {
+                $customer->phones()->create($phone);
+            }
         });
     }
 }
