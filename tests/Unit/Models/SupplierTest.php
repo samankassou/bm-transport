@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Country;
 use App\Models\Supplier;
 use App\Models\SupplierType;
+use App\Models\SupplierPhone;
 
 test('to array', function () {
     $supplier = Supplier::factory()->create()->fresh();
@@ -45,7 +46,8 @@ it('has a type', function () {
 it('may have phones', function () {
     $supplier = Supplier::factory()->hasPhones(3)->create();
 
-    expect($supplier->phones)->toHaveCount(3);
+    expect($supplier->phones)->toHaveCount(3)
+        ->each->toBeInstanceOf(SupplierPhone::class);
 });
 
 it('belongs to a city', function () {

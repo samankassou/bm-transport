@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\Company;
+use App\Models\Supplier;
 use App\Models\SupplierType;
 
 test('to array', function () {
@@ -27,5 +28,6 @@ it('belongs to a company', function () {
 it('may have a supplier', function () {
     $supplierType = SupplierType::factory()->hasSuppliers(3)->create();
 
-    expect($supplierType->suppliers)->toHaveCount(3);
+    expect($supplierType->suppliers)->toHaveCount(3)
+        ->each->toBeInstanceOf(Supplier::class);
 });

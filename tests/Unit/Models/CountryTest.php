@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\City;
 use App\Models\Country;
 
 test('to array', function () {
@@ -20,5 +21,6 @@ test('to array', function () {
 it('may have cities', function () {
     $country = Country::factory()->hasCities(3)->create();
 
-    expect($country->cities)->toHaveCount(3);
+    expect($country->cities)->toHaveCount(3)
+        ->each->toBeInstanceOf(City::class);
 });

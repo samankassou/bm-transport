@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Models\User;
+use App\Models\Company;
 
 test('to array', function () {
     $user = User::factory()->create()->fresh();
@@ -21,5 +22,6 @@ test('to array', function () {
 it('may have companies', function () {
     $user = User::factory()->hasCompanies(3)->create();
 
-    expect($user->companies)->toHaveCount(3);
+    expect($user->companies)->toHaveCount(3)
+        ->each->toBeInstanceOf(Company::class);
 });

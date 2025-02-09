@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Models\Company;
 use App\Models\Customer;
+use App\Models\CustomerPhone;
 
 test('to array', function () {
     $customer = Customer::factory()->create()->fresh();
@@ -31,5 +32,6 @@ it('belongs to a company', function () {
 it('may have phones', function () {
     $customer = Customer::factory()->hasPhones(3)->create();
 
-    expect($customer->phones)->toHaveCount(3);
+    expect($customer->phones)->toHaveCount(3)
+        ->each->toBeInstanceOf(CustomerPhone::class);
 });

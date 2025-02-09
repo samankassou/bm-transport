@@ -2,8 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Models\Company;
 use App\Models\User;
+use App\Models\Income;
+use App\Models\Company;
+use App\Models\Expense;
+use App\Models\Customer;
+use App\Models\TypeOfIncome;
+use App\Models\TypeOfExpense;
 
 test('to array', function () {
     $company = Company::factory()->create()->fresh();
@@ -33,29 +38,34 @@ it('it has an owner', function () {
 it('may have customers', function () {
     $company = Company::factory()->hasCustomers(3)->create();
 
-    expect($company->customers->count())->toBe(3);
+    expect($company->customers)->toHaveCount(3)
+        ->each->toBeInstanceOf(Customer::class);
 });
 
 it('may have type of incomes', function () {
     $company = Company::factory()->hasTypeOfIncomes(3)->create();
 
-    expect($company->typeOfIncomes->count())->toBe(3);
+    expect($company->typeOfIncomes)->toHaveCount(3)
+        ->each->toBeInstanceOf(TypeOfIncome::class);
 });
 
 it('may have incomes', function () {
     $company = Company::factory()->hasIncomes(3)->create();
 
-    expect($company->incomes->count())->toBe(3);
+    expect($company->incomes)->toHaveCount(3)
+        ->each->toBeInstanceOf(Income::class);
 });
 
 it('may have type of expenses', function () {
     $company = Company::factory()->hasTypeOfExpenses(3)->create();
 
-    expect($company->typeOfExpenses->count())->toBe(3);
+    expect($company->typeOfExpenses)->toHaveCount(3)
+        ->each->toBeInstanceOf(TypeOfExpense::class);
 });
 
 it('may have expenses', function () {
     $company = Company::factory()->hasExpenses(3)->create();
 
-    expect($company->expenses->count())->toBe(3);
+    expect($company->expenses)->toHaveCount(3)
+        ->each->toBeInstanceOf(Expense::class);
 });

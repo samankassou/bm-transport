@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Expense;
 use App\Models\TypeOfExpense;
 
 test('to array', function () {
@@ -19,5 +20,6 @@ test('to array', function () {
 it('may have expenses', function () {
     $typeOfExpense = TypeOfExpense::factory()->hasExpenses(3)->create();
 
-    expect($typeOfExpense->expenses)->toHaveCount(3);
+    expect($typeOfExpense->expenses)->toHaveCount(3)
+        ->each->toBeInstanceOf(Expense::class);
 });
