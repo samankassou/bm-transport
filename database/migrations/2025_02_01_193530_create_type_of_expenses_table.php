@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('type_of_expenses', function (Blueprint $table): void {
             $table->id();
+            $table->foreignId('company_id')->constrained();
             $table->string('title');
             $table->timestamps();
         });

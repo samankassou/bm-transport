@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Actions\Expense;
 
-use App\Models\Expense;
+use App\Models\Company;
 
 final class CreateExpenseAction
 {
     /**
      * Handle the incoming request.
      *
-     * @param  array<string, string|int>  $expense
+     * @param  array<string, string|int>  $attributes
      */
-    public function handle(array $expense): void
+    public function handle(Company $company, array $attributes): void
     {
-        Expense::create($expense);
+        $company->expenses()->create($attributes);
     }
 }

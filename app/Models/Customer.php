@@ -4,25 +4,18 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Traits\HasCompany;
+use Database\Factories\CustomerFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Customer extends Model
 {
-    /** @use HasFactory<\Database\Factories\CustomerFactory> */
-    use HasFactory;
+    use HasCompany;
 
-    /**
-     * company that owns this Customer
-     *
-     * @return BelongsTo<Company, $this>
-     */
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
+    /** @use HasFactory<CustomerFactory> */
+    use HasFactory;
 
     /**
      * customer phones

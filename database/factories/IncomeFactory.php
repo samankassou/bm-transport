@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use App\Models\TypeOfIncome;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,7 @@ final class IncomeFactory extends Factory
     public function definition(): array
     {
         return [
+            'company_id' => Company::factory()->create(),
             'type_of_income_id' => TypeOfIncome::factory()->create(),
             'title' => $this->faker->sentence,
             'date' => $this->faker->date,

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ final class TypeOfExpenseFactory extends Factory
     public function definition(): array
     {
         return [
+            'company_id' => Company::factory()->create(),
             'title' => $this->faker->word,
         ];
     }

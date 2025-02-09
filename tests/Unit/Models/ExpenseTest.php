@@ -11,6 +11,7 @@ test('to array', function () {
     expect(array_keys($expense->toArray()))
         ->toEqual([
             'id',
+            'company_id',
             'type_of_expense_id',
             'title',
             'date',

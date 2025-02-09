@@ -10,6 +10,7 @@ test('to array', function () {
     expect(array_keys($typeOfIncome->toArray()))
         ->toEqual([
             'id',
+            'company_id',
             'name',
             'created_at',
             'updated_at',

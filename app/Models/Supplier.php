@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Traits\HasCompany;
 use Database\Factories\SupplierFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,18 +13,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Supplier extends Model
 {
+    use HasCompany;
+
     /** @use HasFactory<SupplierFactory> */
     use HasFactory;
-
-    /**
-     * Get the company that owns the supplier.
-     *
-     * @return BelongsTo<Company, $this>
-     */
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
 
     /**
      * Get the supplier type.

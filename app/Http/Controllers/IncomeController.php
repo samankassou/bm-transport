@@ -9,26 +9,27 @@ use App\Actions\Income\DeleteIncomeAction;
 use App\Actions\Income\UpdateIncomeAction;
 use App\Http\Requests\CreateIncomeRequest;
 use App\Http\Requests\UpdateIncomeRequest;
+use App\Models\Company;
 use App\Models\Income;
 use Illuminate\Http\Response;
 
 final class IncomeController
 {
-    public function store(CreateIncomeRequest $request, CreateIncomeAction $action): Response
+    public function store(CreateIncomeRequest $request, Company $company, CreateIncomeAction $action): Response
     {
-        $action->handle($request->array());
+        $action->handle($company, $request->validated());
 
         return response(status: 201);
     }
 
-    public function update(UpdateIncomeRequest $request, Income $income, UpdateIncomeAction $action): Response
+    public function update(UpdateIncomeRequest $request, Company $company, Income $income, UpdateIncomeAction $action): Response
     {
         $action->handle($income, $request->array());
 
         return response(status: 204);
     }
 
-    public function destroy(Income $income, DeleteIncomeAction $action): Response
+    public function destroy(Company $company, Income $income, DeleteIncomeAction $action): Response
     {
         $action->handle($income);
 

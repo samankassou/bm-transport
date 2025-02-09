@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Actions\Income;
 
-use App\Models\Income;
+use App\Models\Company;
 
 final class CreateIncomeAction
 {
     /**
      * Handle the incoming request.
      *
-     * @param  array <string, string|int>  $income
+     * @param  array <string, string|int>  $attributes
      */
-    public function handle(array $income): void
+    public function handle(Company $company, array $attributes): void
     {
-        Income::create($income);
+        $company->incomes()->create($attributes);
     }
 }

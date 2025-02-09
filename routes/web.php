@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('incomes', IncomeController::class)->only(['store', 'update', 'destroy']);
-Route::resource('expenses', ExpenseController::class)->only(['store', 'update', 'destroy']);
+Route::prefix('{company}')->group(function () {
+    Route::resource('incomes', IncomeController::class)->except(['create', 'edit']);
+    Route::resource('expenses', ExpenseController::class)->except(['create', 'edit']);
+});

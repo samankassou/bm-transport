@@ -9,6 +9,7 @@ test('to array', function () {
 
     expect($typeOfExpense->toArray())->toHaveKeys([
         'id',
+        'company_id',
         'title',
         'created_at',
         'updated_at',

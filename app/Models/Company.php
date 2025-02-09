@@ -34,4 +34,44 @@ final class Company extends Model
     {
         return $this->hasMany(Customer::class);
     }
+
+    /**
+     * Get the type of incomes for the company.
+     *
+     * @return HasMany<TypeOfIncome, $this>
+     */
+    public function typeOfIncomes(): HasMany
+    {
+        return $this->hasMany(TypeOfIncome::class);
+    }
+
+    /**
+     * Get the incomes for the company.
+     *
+     * @return HasMany<Income, $this>
+     */
+    public function incomes(): HasMany
+    {
+        return $this->hasMany(Income::class);
+    }
+
+    /**
+     * Get the type of expenses for the company.
+     *
+     * @return HasMany<TypeOfExpense, $this>
+     */
+    public function typeOfExpenses(): HasMany
+    {
+        return $this->hasMany(TypeOfExpense::class);
+    }
+
+    /**
+     * Get the expenses for the company.
+     *
+     * @return HasMany<Expense, $this>
+     */
+    public function expenses(): HasMany
+    {
+        return $this->hasMany(Expense::class);
+    }
 }

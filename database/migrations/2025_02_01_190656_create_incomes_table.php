@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table): void {
             $table->id();
+            $table->foreignId('company_id')->constrained();
             $table->foreignId('type_of_income_id')->constrained();
             $table->string('title')->nullable();
             $table->date('date');
