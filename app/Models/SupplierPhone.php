@@ -14,8 +14,6 @@ final class SupplierPhone extends Model
 {
     use HasCompany;
 
-    use HasCompany;
-
     /** @use HasFactory<SupplierPhoneFactory> */
     use HasFactory;
 
