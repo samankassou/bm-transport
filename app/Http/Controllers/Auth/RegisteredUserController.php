@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Str;
 
 /**
  * @codeCoverageIgnore
@@ -37,10 +38,10 @@ final class RegisteredUserController
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $company = $this->createCompany('Test Company');
+        $company = $this->createCompany('Test Company', $request->email);
 
         $user = User::create([
             'name' => $request->name,
@@ -56,14 +57,14 @@ final class RegisteredUserController
         return redirect(route('dashboard', absolute: false));
     }
 
-    private function createCompany(string $name): Company
+    private function createCompany(string $name, string $email): Company
     {
         return Company::create([
             'name' => $name,
-            'domain' => 'test-company',
+            'domain' => Str::random(10),
             'address' => '123 Test St.',
             'phone' => '123-456-7890',
-            'email' => 'company@test.co',
+            'email' => $email,
             'website' => 'https://test.co',
         ]);
     }
