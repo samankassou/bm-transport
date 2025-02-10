@@ -24,7 +24,7 @@ final class IncomeController
 
     public function update(UpdateIncomeRequest $request, Company $company, Income $income, UpdateIncomeAction $action): Response
     {
-        $action->handle($income, $request->array());
+        $action->handle($income, $request->validated());
 
         return response(status: 204);
     }

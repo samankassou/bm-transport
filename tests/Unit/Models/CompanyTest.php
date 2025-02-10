@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
-use App\Models\Income;
 use App\Models\Company;
-use App\Models\Expense;
 use App\Models\Customer;
-use App\Models\TypeOfIncome;
+use App\Models\Expense;
+use App\Models\Income;
 use App\Models\TypeOfExpense;
+use App\Models\TypeOfIncome;
+use App\Models\User;
 
 test('to array', function () {
     $company = Company::factory()->create()->fresh();

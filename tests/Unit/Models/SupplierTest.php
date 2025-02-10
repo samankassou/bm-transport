@@ -6,8 +6,8 @@ use App\Models\City;
 use App\Models\Company;
 use App\Models\Country;
 use App\Models\Supplier;
-use App\Models\SupplierType;
 use App\Models\SupplierPhone;
+use App\Models\SupplierType;
 
 test('to array', function () {
     $supplier = Supplier::factory()->create()->fresh();
