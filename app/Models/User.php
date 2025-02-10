@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-final class User extends Authenticatable
+/**
+ * @property Company $company
+ */
+final class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory;
@@ -40,13 +43,13 @@ final class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Get the company that owns the user.
      *
-     * @return HasMany<Company, $this>
+     * @return BelongsTo<Company, $this>
      */
-    public function companies(): HasMany
+    public function company(): BelongsTo
     {
-        return $this->hasMany(Company::class, 'owner_id');
+        return $this->belongsTo(Company::class);
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\RedirectResponse;
@@ -7,7 +9,10 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class EmailVerificationPromptController
+/**
+ * @codeCoverageIgnore
+ */
+final class EmailVerificationPromptController
 {
     /**
      * Display the email verification prompt.

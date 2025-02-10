@@ -23,17 +23,17 @@ final class SupplierFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => Company::factory()->create(),
-            'supplier_type_id' => SupplierType::factory()->create(),
-            'country_id' => Country::factory()->create(),
-            'city_id' => City::factory()->create(),
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'website' => $this->faker->url,
-            'rccm_number' => $this->faker->ean13,
-            'postal_code' => $this->faker->postcode,
-            'address' => $this->faker->address,
-            'notes' => $this->faker->sentence,
+            'company_id' => Company::factory(),
+            'supplier_type_id' => SupplierType::factory(),
+            'country_id' => Country::factory(),
+            'city_id' => City::factory(),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'website' => fake()->url(),
+            'rccm_number' => fake()->ean13(),
+            'postal_code' => fake()->postcode(),
+            'address' => fake()->address(),
+            'notes' => fake()->sentence(),
         ];
     }
 }

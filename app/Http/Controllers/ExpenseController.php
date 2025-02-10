@@ -8,30 +8,42 @@ use App\Actions\Expense\CreateExpenseAction;
 use App\Actions\Expense\DeleteExpenseAction;
 use App\Actions\Expense\UpdateExpenseAction;
 use App\Http\Requests\CreateExpenseRequest;
-use App\Models\Company;
 use App\Models\Expense;
-use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Inertia\Response;
 
 final class ExpenseController
 {
-    public function store(CreateExpenseRequest $request, Company $company, CreateExpenseAction $action): Response
+    public function index(): Response
     {
-        $action->handle($company, $request->validated());
+        $expenses = Auth::user()->company->expenses()->with('typeOfExpense')->paginate(5);
 
-        return response(status: 201);
+        return Inertia::render('Expenses/Index', [
+            'expenses' => $expenses,
+        ]);
     }
 
-    public function update(CreateExpenseRequest $request, Company $company, Expense $expense, UpdateExpenseAction $action): Response
+    public function store(CreateExpenseRequest $request, CreateExpenseAction $action): RedirectResponse
+    {
+        $action->handle(Auth::user()->company, $request->validated());
+
+        return Redirect::route('expenses.index')->with('success', 'Expense created.');
+    }
+
+    public function update(CreateExpenseRequest $request, Expense $expense, UpdateExpenseAction $action): RedirectResponse
     {
         $action->handle($expense, $request->validated());
 
-        return response(status: 204);
+        return Redirect::route('expenses.index')->with('success', 'Expense updated.');
     }
 
-    public function destroy(Company $company, Expense $expense, DeleteExpenseAction $action): Response
+    public function destroy(Expense $expense, DeleteExpenseAction $action): RedirectResponse
     {
         $action->handle($expense);
 
-        return response(status: 204);
+        return Redirect::route('expenses.index')->with('success', 'Expense deleted.');
     }
 }

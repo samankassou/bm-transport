@@ -20,7 +20,7 @@ final class CityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->city,
+            'name' => fake()->unique()->city(),
             'country_id' => Country::factory(),
         ];
     }

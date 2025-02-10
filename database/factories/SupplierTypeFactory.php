@@ -20,8 +20,8 @@ final class SupplierTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => Company::factory()->create(),
-            'name' => $this->faker->word,
+            'company_id' => Company::factory(),
+            'name' => fake()->word(),
         ];
     }
 }

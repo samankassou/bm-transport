@@ -20,12 +20,12 @@ final class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => Company::factory()->create(),
-            'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'rccm_number' => $this->faker->ean13,
-            'postal_code' => $this->faker->postcode,
-            'address' => $this->faker->address,
+            'company_id' => Company::factory(),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'rccm_number' => fake()->ean13(),
+            'postal_code' => fake()->postcode(),
+            'address' => fake()->address(),
         ];
     }
 }

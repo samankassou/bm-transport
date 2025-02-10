@@ -20,7 +20,7 @@ final class CustomerPhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'customer_id' => Customer::factory()->create(),
+            'customer_id' => Customer::factory(),
             'phone' => $this->faker->phoneNumber,
         ];
     }

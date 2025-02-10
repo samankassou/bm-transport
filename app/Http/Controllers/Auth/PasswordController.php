@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\RedirectResponse;
@@ -7,7 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 
-class PasswordController
+/**
+ * @codeCoverageIgnore
+ */
+final class PasswordController
 {
     /**
      * Update the user's password.

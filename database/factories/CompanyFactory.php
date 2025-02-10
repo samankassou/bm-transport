@@ -20,14 +20,14 @@ final class CompanyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->company,
-            'short_name' => $this->faker->companySuffix,
-            'domain' => $this->faker->unique()->domainName,
-            'address' => $this->faker->address,
-            'phone' => $this->faker->phoneNumber,
-            'email' => $this->faker->unique()->safeEmail,
-            'website' => $this->faker->url,
-            'owner_id' => User::factory()->create(),
+            'name' => fake()->unique()->company(),
+            'short_name' => fake()->companySuffix(),
+            'domain' => fake()->unique()->domainName(),
+            'address' => fake()->address(),
+            'phone' => fake()->phoneNumber(),
+            'email' => fake()->unique()->safeEmail(),
+            'website' => fake()->url(),
+            'owner_id' => User::factory(),
         ];
     }
 }

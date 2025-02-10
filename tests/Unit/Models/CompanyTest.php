@@ -35,6 +35,13 @@ it('it has an owner', function () {
     expect($company->owner)->toBeInstanceOf(User::class);
 });
 
+it('may have users', function () {
+    $company = Company::factory()->hasUsers(3)->create();
+
+    expect($company->users)->toHaveCount(3)
+        ->each->toBeInstanceOf(User::class);
+});
+
 it('may have customers', function () {
     $company = Company::factory()->hasCustomers(3)->create();
 

@@ -1,11 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class EmailVerificationNotificationController
+/**
+ * @codeCoverageIgnore
+ */
+final class EmailVerificationNotificationController
 {
     /**
      * Send a new email verification notification.

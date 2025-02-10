@@ -9,30 +9,54 @@ use App\Actions\Income\DeleteIncomeAction;
 use App\Actions\Income\UpdateIncomeAction;
 use App\Http\Requests\CreateIncomeRequest;
 use App\Http\Requests\UpdateIncomeRequest;
-use App\Models\Company;
 use App\Models\Income;
-use Illuminate\Http\Response;
+use App\Models\User;
+use Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Inertia\Response;
 
 final class IncomeController
 {
-    public function store(CreateIncomeRequest $request, Company $company, CreateIncomeAction $action): Response
+    public function index(): Response
     {
-        $action->handle($company, $request->validated());
+        $incomes = $this->getAuthenticatedUser()->company->incomes()->with('typeOfIncome')->paginate(5);
 
-        return response(status: 201);
+        return Inertia::render('Incomes/Index', [
+            'incomes' => $incomes,
+        ]);
     }
 
-    public function update(UpdateIncomeRequest $request, Company $company, Income $income, UpdateIncomeAction $action): Response
+    public function store(CreateIncomeRequest $request, CreateIncomeAction $action): RedirectResponse
+    {
+        $action->handle($this->getAuthenticatedUser()->company, $request->validated());
+
+        return Redirect::route('incomes.index')->with('success', 'Income created.');
+    }
+
+    public function update(UpdateIncomeRequest $request, Income $income, UpdateIncomeAction $action): RedirectResponse
     {
         $action->handle($income, $request->validated());
 
-        return response(status: 204);
+        return Redirect::route('incomes.index')->with('success', 'Income updated.');
     }
 
-    public function destroy(Company $company, Income $income, DeleteIncomeAction $action): Response
+    public function destroy(Income $income, DeleteIncomeAction $action): RedirectResponse
     {
         $action->handle($income);
 
-        return response(status: 204);
+        return Redirect::route('incomes.index')->with('success', 'Income deleted.');
+    }
+
+    /**
+     * @psalm-return User
+     *
+     * @phpstan-return User
+     */
+    private function getAuthenticatedUser(): User
+    {
+        /** @var User */
+        return Auth::user();
     }
 }

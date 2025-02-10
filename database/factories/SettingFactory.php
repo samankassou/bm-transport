@@ -18,11 +18,11 @@ final class SettingFactory extends Factory
      */
     public function definition(): array
     {
-        $value = $this->faker->randomElement([true, false, null, 1, 0, 'test', json_encode(['test' => 'test'])]);
+        $value = fake()->randomElement([true, false, null, 1, 0, 'test', json_encode(['test' => 'test'])]);
         $type = gettype($value);
 
         return [
-            'key' => $this->faker->word,
+            'key' => fake()->word(),
             'type' => $type,
             'value' => $value,
         ];

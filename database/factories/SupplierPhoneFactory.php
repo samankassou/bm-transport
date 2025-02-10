@@ -21,9 +21,9 @@ final class SupplierPhoneFactory extends Factory
     public function definition(): array
     {
         return [
-            'company_id' => Company::factory()->create(),
-            'supplier_id' => Supplier::factory()->create(),
-            'phone' => $this->faker->phoneNumber,
+            'company_id' => Company::factory(),
+            'supplier_id' => Supplier::factory(),
+            'phone' => fake()->phoneNumber(),
         ];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\RedirectResponse;
@@ -9,7 +11,10 @@ use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class PasswordResetLinkController
+/**
+ * @codeCoverageIgnore
+ */
+final class PasswordResetLinkController
 {
     /**
      * Display the password reset link request view.
@@ -24,7 +29,7 @@ class PasswordResetLinkController
     /**
      * Handle an incoming password reset link request.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
     {
@@ -39,7 +44,7 @@ class PasswordResetLinkController
             $request->only('email')
         );
 
-        if ($status == Password::RESET_LINK_SENT) {
+        if ($status === Password::RESET_LINK_SENT) {
             return back()->with('status', __($status));
         }
 

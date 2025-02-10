@@ -16,6 +16,16 @@ final class Company extends Model
     use HasFactory;
 
     /**
+     * Get the company users.
+     *
+     * @return HasMany<User, $this>
+     */
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
+
+    /**
      * Get the owner that owns the company.
      *
      * @return BelongsTo<User, $this>
