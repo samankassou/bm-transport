@@ -1,13 +1,14 @@
-import { Head } from '@inertiajs/react'
-import AdminLayout from '../../Layouts/AdminLayout'
+import AdminLayout from "@/Layouts/AdminLayout";
 
-export default function Index({ event }) {
-  return (
-    <AdminLayout>
-        <Head title="Dashboard" />
-
-        <h1>Dashboard</h1>
-        <p>Welcome back, {event.name}!</p>
-    </AdminLayout>
-  )
+export default function Page() {
+    return (
+        <AdminLayout head="Dashboard">
+            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+                <div className="aspect-video rounded-xl bg-muted/50" />
+                <div className="aspect-video rounded-xl bg-muted/50" />
+                <div className="aspect-video rounded-xl bg-muted/50" />
+            </div>
+            <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+        </AdminLayout>
+    );
 }

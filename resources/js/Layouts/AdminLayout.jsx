@@ -17,8 +17,6 @@ import {
 } from "@/components/ui/sidebar";
 
 export default function Page({ head, children }) {
-    const user = usePage().props.auth.user;
-
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -34,7 +32,7 @@ export default function Page({ head, children }) {
                         <Breadcrumb>
                             <BreadcrumbList>
                                 <BreadcrumbItem className="hidden md:block">
-                                    <BreadcrumbLink href="#">
+                                    <BreadcrumbLink href={route("dashboard")}>
                                         BM Transport
                                     </BreadcrumbLink>
                                 </BreadcrumbItem>
